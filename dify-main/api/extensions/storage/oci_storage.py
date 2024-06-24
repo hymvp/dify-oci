@@ -19,8 +19,7 @@ class OCIStorage(BaseStorage):
                     aws_secret_access_key=app_config.get('OCI_SECRET_KEY'),
                     aws_access_key_id=app_config.get('OCI_ACCESS_KEY'),
                     endpoint_url=app_config.get('OCI_ENDPOINT'),
-                    region_name=app_config.get('OCI_REGION'),
-                    config=Config(s3={'addressing_style': app_config.get('S3_ADDRESS_STYLE')})
+                    region_name=app_config.get('OCI_REGION')
                 )
 
     def save(self, filename, data):
