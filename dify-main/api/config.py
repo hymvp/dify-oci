@@ -142,12 +142,13 @@ class Config:
         self.TENCENT_COS_SCHEME = get_env('TENCENT_COS_SCHEME')
 
         # OCI Storage settings
+        self.OCI_USE_AWS_MANAGED_IAM = get_bool_env('OCI_USE_AWS_MANAGED_IAM')
+        self.OCI_ENDPOINT = get_env('OCI_ENDPOINT')
         self.OCI_BUCKET_NAME = get_env('OCI_BUCKET_NAME')
-        self.OCI_USER_OCID = get_env('OCI_USER_OCID')  
-        self.OCI_KEY_FILE = get_env('OCI_KEY_FILE')
-        self.OCI_FINGERPRINT = get_env('OCI_FINGERPRINT')
-        self.OCI_TENANCY_OCID = get_env('OCI_TENANCY_OCID')
+        self.OCI_ACCESS_KEY = get_env('OCI_ACCESS_KEY')
+        self.OCI_SECRET_KEY = get_env('OCI_SECRET_KEY')
         self.OCI_REGION = get_env('OCI_REGION')
+        self.OCI_ADDRESS_STYLE = get_env('S3_ADDRESS_STYLE')
        
 
         # ------------------------

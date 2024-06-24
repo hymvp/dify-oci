@@ -2,7 +2,7 @@ version: '3'
 services:
   # API service
   api:
-    image: langgenius/dify-api:0.6.11
+    image: dify-oci:v1.0
     restart: always
     environment:
       # Startup mode, 'api' starts the API server.
@@ -110,12 +110,14 @@ services:
       TENCENT_COS_REGION: 'your-region'
       TENCENT_COS_SCHEME: 'your-scheme'
       # The OCI storage configurations, only available when STORAGE_TYPE is `oci-storage`.
+
+      OCI_USE_OCI_MANAGED_IAM: false
+      OCI_ENDPOINT: "https://sehubjapacprod.compat.objectstorage.us-ashburn-1.oraclecloud.com"
       OCI_BUCKET_NAME: "oci_dify"
-      OCI_USER_OCID: "ocid1.user.oc1..aaaaaaaa46c2mrkhtdj64uwfn6ojw5hc2onod5p4lfzamf7xvdymydd5itqa"
-      OCI_KEY_FILE: "/home/opc/key.pem"
-      OCI_FINGERPRINT: "c8:77:88:9e:a6:b8:50:97:be:59:4a:23:f9:71:94:12"
-      OCI_TENANCY_OCID: "ocid1.tenancy.oc1..aaaaaaaaro7aox2fclu4urtpgsbacnrmjv46e7n4fw3sc2wbq24l7dzf3kba"
+      OCI_ACCESS_KEY: "Hgna+mgA5AmAFE21Zh2COMVLZEgjlrOPBjEzIGVPsvo="
+      OCI_SECRET_KEY: "e293fca6a546ac1f2659f15a0c3d251bf8e087a1"
       OCI_REGION: "us-ashburn-1"
+
       # The type of vector store to use. Supported values are `weaviate`, `qdrant`, `milvus`, `relyt`.
       VECTOR_STORE: weaviate
       # The Weaviate endpoint URL. Only available when VECTOR_STORE is `weaviate`.
@@ -223,7 +225,7 @@ services:
   # worker service
   # The Celery worker for processing the queue.
   worker:
-    image: langgenius/dify-api:0.6.11
+    image: dify-oci:v1.0
     restart: always
     environment:
       CONSOLE_WEB_URL: ''
@@ -286,12 +288,14 @@ services:
       TENCENT_COS_REGION: 'your-region'
       TENCENT_COS_SCHEME: 'your-scheme'
       # The OCI storage configurations, only available when STORAGE_TYPE is `oci-storage`.
+
+      OCI_USE_OCI_MANAGED_IAM: false
+      OCI_ENDPOINT: "https://sehubjapacprod.compat.objectstorage.us-ashburn-1.oraclecloud.com"
       OCI_BUCKET_NAME: "oci_dify"
-      OCI_USER_OCID: "ocid1.user.oc1..aaaaaaaa46c2mrkhtdj64uwfn6ojw5hc2onod5p4lfzamf7xvdymydd5itqa"
-      OCI_KEY_FILE: "/home/opc/key.pem"
-      OCI_FINGERPRINT: "c8:77:88:9e:a6:b8:50:97:be:59:4a:23:f9:71:94:12"
-      OCI_TENANCY_OCID: "ocid1.tenancy.oc1..aaaaaaaaro7aox2fclu4urtpgsbacnrmjv46e7n4fw3sc2wbq24l7dzf3kba"
+      OCI_ACCESS_KEY: "Hgna+mgA5AmAFE21Zh2COMVLZEgjlrOPBjEzIGVPsvo="
+      OCI_SECRET_KEY: "e293fca6a546ac1f2659f15a0c3d251bf8e087a1"
       OCI_REGION: "us-ashburn-1"
+      
       # The type of vector store to use. Supported values are `weaviate`, `qdrant`, `milvus`, `relyt`, `pgvector`.
       VECTOR_STORE: weaviate
       # The Weaviate endpoint URL. Only available when VECTOR_STORE is `weaviate`.
