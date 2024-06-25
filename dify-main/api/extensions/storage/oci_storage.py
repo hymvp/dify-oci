@@ -8,8 +8,6 @@ import boto3
 
 
 class OCIStorage(BaseStorage):
-    """Implementation for s3 storage.
-    """
     def __init__(self, app: Flask):
         super().__init__(app)
         app_config = self.app.config
